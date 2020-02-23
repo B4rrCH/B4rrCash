@@ -17,6 +17,7 @@ namespace B4rrCash
         public void SetRate(string fromCurrency, string toCurrency, decimal rate)
         {
             exchangeRates[(fromCurrency, toCurrency)] = rate;
+            exchangeRates[(toCurrency, fromCurrency)] = 1 / rate;
         }
 
         public Money Convert(Money money, string toCurrency)
@@ -24,7 +25,7 @@ namespace B4rrCash
             string fromCurrency = money.Currency;
             if (fromCurrency == toCurrency)
                 return money;
-            int amount = (int) (money.Amount * exchangeRates[(fromCurrency, toCurrency)]);
+            int amount = (int)(money.Amount / exchangeRates[(fromCurrency, toCurrency)]);
             return new Money(amount, toCurrency);
         }
 

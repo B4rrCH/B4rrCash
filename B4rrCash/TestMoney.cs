@@ -52,6 +52,35 @@ namespace B4rrCash
         [Test]
         public void TestAddition()
         {
+            Money tenDollars = Money.Dollar(5) + Money.Dollar(5) as Money;
+            Assert.AreEqual(Money.Dollar(10), tenDollars);
+        }
+
+        [Test]
+        public void TestReduceSameCurrencies()
+        {
+            IExpression sum = new Sum(Money.Dollar(3), Money.Dollar(4));
+            Bank bank = new Bank();
+            Money result = bank.Reduce(sum, "USD");
+            Assert.AreEqual(Money.Dollar(7), result);
+        }
+
+        [Test]
+        public void TestReduceDifferentCurrency()
+        {
+            Bank bank = new Bank();
+            bank.SetRate("CHF", "USD", 2);
+            Money result = bank.Reduce(Money.Franc(4), "USD");
+            Assert.AreEqual(Money.Dollar(2), result);
+
+        }
+
+        public void TestReduceMultipleCurrencies()
+        {
+            Bank bank = new Bank();
+            bank.SetRate("CHF", "USD", 2);
+            Money result = bank.Reduce(Money.Dollar(1) + Money.Franc(2), "USD");
+            Assert.AreEqual(Money.Dollar(2), result);
         }
     }
 }

@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace B4rrCash
 {
+    interface IExpression
+    {
+    }
+
     class Sum : IExpression
     {
         public IExpression Augend;
