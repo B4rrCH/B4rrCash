@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace B4rrCash
 {
-    interface Expression
+    interface IExpression
     {
     }
 }

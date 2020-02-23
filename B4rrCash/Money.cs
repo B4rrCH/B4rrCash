@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace B4rrCash
 {
-    class Money : Expression
+    class Money : IExpression
     {
         public int Amount { get; protected set; }
         public string Currency { get; protected set; }
@@ -42,7 +42,7 @@ namespace B4rrCash
         public static Money operator *(int factor, Money money) => money.times(factor);
         
         public static Money operator *(Money money, int factor) => money.times(factor);
-        public static Expression operator +(Money money1, Money money2)
+        public static IExpression operator +(Money money1, Money money2)
         {
             if (money1.Currency == money2.Currency)
                 return new Money(money1.Amount + money2.Amount, money1.Currency);

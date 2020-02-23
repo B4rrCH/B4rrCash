@@ -51,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bank.cs" />
-    <Compile Include="Expression.cs" />
+    <Compile Include="IExpression.cs" />
     <Compile Include="Sum.cs" />
     <Compile Include="Money.cs" />
     <Compile Include="Program.cs" />

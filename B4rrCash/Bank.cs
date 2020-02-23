@@ -28,7 +28,7 @@ namespace B4rrCash
             return new Money(amount, toCurrency);
         }
 
-        public Money Reduce(Expression source, string toCurrency)
+        public Money Reduce(IExpression source, string toCurrency)
         {
             if (source is Sum)
             {

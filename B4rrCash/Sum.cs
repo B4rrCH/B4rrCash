@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace B4rrCash
 {
-    class Sum : Expression
+    class Sum : IExpression
     {
-        public Expression Augend;
-        public Expression Addend;
+        public IExpression Augend;
+        public IExpression Addend;
 
-        public Sum(Expression augend, Expression addend)
+        public Sum(IExpression augend, IExpression addend)
         {
             Augend = augend;
             Addend = addend;
