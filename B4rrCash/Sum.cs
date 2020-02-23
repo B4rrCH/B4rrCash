@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace B4rrCash
 {
-    abstract class IExpression
+    abstract class Expression
     {
-        public static Sum operator +(IExpression ex1, IExpression ex2) => new Sum(ex1, ex2);
+        public static Sum operator +(Expression ex1, Expression ex2) => new Sum(ex1, ex2);
     }
 
-    class Sum : IExpression
+    class Sum : Expression
     {
-        public IExpression Augend;
-        public IExpression Addend;
+        public Expression Augend;
+        public Expression Addend;
 
-        public Sum(IExpression augend, IExpression addend)
+        public Sum(Expression augend, Expression addend)
         {
             Augend = augend;
             Addend = addend;

@@ -59,7 +59,7 @@ namespace B4rrCash
         [Test]
         public void TestReduceSameCurrencies()
         {
-            IExpression sum = new Sum(Money.Dollar(3), Money.Dollar(4));
+            Expression sum = new Sum(Money.Dollar(3), Money.Dollar(4));
             Bank bank = new Bank();
             Money result = bank.Reduce(sum, "USD");
             Assert.AreEqual(Money.Dollar(7), result);
@@ -90,7 +90,7 @@ namespace B4rrCash
             Bank bank = new Bank();
             bank.SetRate("USD", "CHF", 1.1);
             bank.SetRate("EUR", "CHF", 0.9);
-            IExpression wallet = Money.Franc(5);
+            Expression wallet = Money.Franc(5);
             wallet += new Money(10, "EUR");
             wallet += new Money(20, "USD");
 
