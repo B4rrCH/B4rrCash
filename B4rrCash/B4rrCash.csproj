@@ -50,10 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Expression.cs" />
+    <Compile Include="Bank.cs" />
+    <Compile Include="Wallet.cs" />
     <Compile Include="Money.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestWalletBank.cs" />
     <Compile Include="TestMoney.cs" />
   </ItemGroup>
   <ItemGroup>
