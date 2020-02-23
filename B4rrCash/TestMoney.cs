@@ -14,8 +14,8 @@ namespace B4rrCash
         [Test]
         public void TestDollarMultiplication()
         {
-            Dollar fiveDollars = new Dollar(5);
-            Dollar tenDollars = new Dollar(2 * 5);
+            Money fiveDollars = Money.Dollar(5);
+            Money tenDollars = Money.Dollar(2 * 5);
             Assert.AreEqual(tenDollars, 2 * fiveDollars);
             Assert.AreEqual(tenDollars, fiveDollars * 2);
         }
@@ -23,8 +23,8 @@ namespace B4rrCash
         [Test]
         public void TestFrancMultiplication()
         {
-            Franc fiveFrancs = new Franc(5);
-            Franc tenFrancs = new Franc(2 * 5);
+            Money fiveFrancs = Money.Franc(5);
+            Money tenFrancs = Money.Franc(2 * 5);
             Assert.AreEqual(tenFrancs, 2 * fiveFrancs);
             Assert.AreEqual(tenFrancs, fiveFrancs * 2);
         }
@@ -32,10 +32,10 @@ namespace B4rrCash
         [Test]
         public void TestEquality()
         {
-            Dollar fiveDollars = new Dollar(5);
-            Dollar fiveDollars2 = new Dollar(5);
-            Dollar sixDollars = new Dollar(6);
-            Franc fiveFrancs = new Franc(5);
+            Money fiveDollars = Money.Dollar(5);
+            Money fiveDollars2 = Money.Dollar(5);
+            Money sixDollars = Money.Dollar(6);
+            Money fiveFrancs = Money.Franc(5);
 
             Assert.IsTrue(fiveDollars.Equals(fiveDollars2));
             Assert.AreNotSame(fiveDollars, fiveDollars2);
@@ -43,6 +43,13 @@ namespace B4rrCash
             Assert.IsFalse(fiveDollars.Equals(sixDollars));
 
             Assert.IsFalse(fiveDollars.Equals(fiveFrancs));
+        }
+
+        [Test]
+        public void TestCurrency()
+        {
+            Money fiveFrancs = Money.Franc(5);
+            Assert.AreEqual("CHF", fiveFrancs.Currency);
         }
     }
 }

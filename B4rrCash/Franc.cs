@@ -8,9 +8,14 @@ namespace B4rrCash
 {
     class Franc : Money
     {
-        public Franc(int amount)
+        public override string Currency() => "CHF";
+        public Franc()
         {
-            this.Currency = "CHF";
+            this.Amount = 1;
+        }
+
+        private Franc(int amount)
+        {
             this.Amount = amount;
         }
 
