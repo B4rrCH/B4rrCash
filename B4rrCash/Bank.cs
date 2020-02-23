@@ -8,13 +8,13 @@ namespace B4rrCash
 {
     class Bank
     {
-        private Dictionary<(string, string), decimal> exchangeRates;
+        private Dictionary<(string, string), double> exchangeRates;
         public Bank()
         {
-            exchangeRates = new Dictionary<(string, string), decimal>();
+            exchangeRates = new Dictionary<(string, string), double>();
         }
 
-        public void SetRate(string fromCurrency, string toCurrency, decimal rate)
+        public void SetRate(string fromCurrency, string toCurrency, double rate)
         {
             exchangeRates[(fromCurrency, toCurrency)] = rate;
             exchangeRates[(toCurrency, fromCurrency)] = 1 / rate;

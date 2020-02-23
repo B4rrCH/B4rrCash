@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace B4rrCash
 {
-    interface IExpression
+    abstract class IExpression
     {
+        public static Sum operator +(IExpression ex1, IExpression ex2) => new Sum(ex1, ex2);
     }
 
     class Sum : IExpression

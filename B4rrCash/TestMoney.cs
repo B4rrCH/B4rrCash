@@ -75,12 +75,27 @@ namespace B4rrCash
 
         }
 
+        [Test]
         public void TestReduceMultipleCurrencies()
         {
             Bank bank = new Bank();
             bank.SetRate("CHF", "USD", 2);
             Money result = bank.Reduce(Money.Dollar(1) + Money.Franc(2), "USD");
             Assert.AreEqual(Money.Dollar(2), result);
+        }
+
+        [Test]
+        public void TestComplexExample()
+        {
+            Bank bank = new Bank();
+            bank.SetRate("USD", "CHF", 1.1);
+            bank.SetRate("EUR", "CHF", 0.9);
+            IExpression wallet = Money.Franc(5);
+            wallet += new Money(10, "EUR");
+            wallet += new Money(20, "USD");
+
+            Money expected = Money.Franc(5 + (int)(10 / 0.9) + (int)(20 / 1.1));
+            Assert.AreEqual(expected, bank.Reduce(wallet, "CHF"));
         }
     }
 }
