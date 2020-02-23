@@ -52,10 +52,6 @@ namespace B4rrCash
         [Test]
         public void TestAddition()
         {
-            Wallet wallet = Money.Dollar(5) + Money.Dollar(5);
-            Bank bank = new Bank();
-            Money sum = bank.Reduce(wallet, "USD");
-            Assert.AreEqual(Money.Dollar(10), sum);
         }
     }
 }

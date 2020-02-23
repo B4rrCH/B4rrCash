@@ -8,30 +8,36 @@ namespace B4rrCash
 {
     class Bank
     {
-        private Dictionary<(string, string), int> exchangeRates;
+        private Dictionary<(string, string), decimal> exchangeRates;
         public Bank()
         {
-            exchangeRates = new Dictionary<(string, string), int>();
+            exchangeRates = new Dictionary<(string, string), decimal>();
         }
 
-        public void AddRate(string fromCurrency, string toCurrency, int rate)
+        public void SetRate(string fromCurrency, string toCurrency, decimal rate)
         {
             exchangeRates[(fromCurrency, toCurrency)] = rate;
         }
 
-        public int Convert(string fromCurrency, string toCurrency, int amount)
+        public Money Convert(Money money, string toCurrency)
         {
+            string fromCurrency = money.Currency;
             if (fromCurrency == toCurrency)
-                return amount;
-            return exchangeRates[(fromCurrency, toCurrency)] * amount;
+                return money;
+            int amount = (int) (money.Amount * exchangeRates[(fromCurrency, toCurrency)]);
+            return new Money(amount, toCurrency);
         }
 
-        public Money Reduce(Wallet wallet, string toCurrency)
+        public Money Reduce(Expression source, string toCurrency)
         {
-            int amount = 0;
-            foreach(KeyValuePair<string, int> currencyAmount in wallet.Moneys)
-                amount += Convert(currencyAmount.Key, toCurrency, currencyAmount.Value);
-            return new Money(amount, toCurrency);
+            if (source is Sum)
+            {
+                Money augend = Reduce((source as Sum).Augend, toCurrency);
+                Money addend = Reduce((source as Sum).Addend, toCurrency);
+                return new Money(augend.Amount + addend.Amount, toCurrency);
+            }
+
+            return Convert(source as Money, toCurrency);
         }
     }
 }

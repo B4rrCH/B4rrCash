@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace B4rrCash
 {
-    class Money
+    class Money : Expression
     {
         public int Amount { get; protected set; }
         public string Currency { get; protected set; }
@@ -42,12 +42,12 @@ namespace B4rrCash
         public static Money operator *(int factor, Money money) => money.times(factor);
         
         public static Money operator *(Money money, int factor) => money.times(factor);
-
-        public static Wallet operator +(Money money1, Money money2)
+        public static Expression operator +(Money money1, Money money2)
         {
-            return new Wallet(new Money[]{ money1, money2 });
+            if (money1.Currency == money2.Currency)
+                return new Money(money1.Amount + money2.Amount, money1.Currency);
+            return new Sum(money1, money2);
         }
-
         public static Money Dollar(int amount) => new Money(amount, "USD");
         public static Money Franc(int amount) => new Money(amount, "CHF");
     }
