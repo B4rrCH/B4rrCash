@@ -12,22 +12,19 @@ namespace B4rrCash
     public class TestMoney
     {
         [Test]
-        public void TestDollarMultiplication()
+        public void TestMultiplication()
         {
             Money fiveDollars = Money.Dollar(5);
             Money tenDollars = Money.Dollar(2 * 5);
             Assert.AreEqual(tenDollars, 2 * fiveDollars);
             Assert.AreEqual(tenDollars, fiveDollars * 2);
-        }
 
-        [Test]
-        public void TestFrancMultiplication()
-        {
             Money fiveFrancs = Money.Franc(5);
             Money tenFrancs = Money.Franc(2 * 5);
             Assert.AreEqual(tenFrancs, 2 * fiveFrancs);
             Assert.AreEqual(tenFrancs, fiveFrancs * 2);
         }
+
 
         [Test]
         public void TestEquality()
@@ -50,6 +47,13 @@ namespace B4rrCash
         {
             Money fiveFrancs = Money.Franc(5);
             Assert.AreEqual("CHF", fiveFrancs.Currency);
+        }
+
+        [Test]
+        public void TestAddition()
+        {
+            Money sum = Money.Dollar(5) + Money.Dollar(5);
+            Assert.AreEqual(Money.Dollar(10), sum);
         }
     }
 }

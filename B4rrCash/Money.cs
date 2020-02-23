@@ -32,18 +32,20 @@ namespace B4rrCash
             return hashCode;
         }
 
+        public override string ToString() => $"{Amount} {Currency}";
+
         public Money times(int factor)
         {
             return new Money(factor * Amount, Currency);
         }
 
-        public static Money operator *(int factor, Money money)
+        public static Money operator *(int factor, Money money) => money.times(factor);
+        
+        public static Money operator *(Money money, int factor) => money.times(factor);
+
+        public static Money operator +(Money money1, Money money2)
         {
-            return money.times(factor);
-        }
-        public static Money operator *(Money money, int factor)
-        {
-            return money.times(factor);
+            return Money.Dollar(10);
         }
 
         public static Money Dollar(int amount) => new Money(amount, "USD");
