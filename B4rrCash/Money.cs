@@ -10,7 +10,6 @@ namespace B4rrCash
     {
         public int Amount { get; protected set; }
         public string Currency { get; protected set; }
-        public string GetCurrency() => this.Currency;
 
         public override bool Equals(object obj)
         {
