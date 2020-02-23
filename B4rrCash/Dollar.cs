@@ -8,10 +8,15 @@ namespace B4rrCash
 {
     class Dollar
     {
-        public Amount {get; private set;}
+        public int Amount {get; private set;}
         public Dollar(int amount)
         {
             this.Amount = amount;
+        }
+
+        public static Dollar operator *(int factor, Dollar dollar)
+        {
+            return new Dollar(factor * dollar.Amount);
         }
     }
 }
