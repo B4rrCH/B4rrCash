@@ -39,13 +39,18 @@ namespace B4rrCash
             return new Money(factor * Amount, Currency);
         }
 
+        public Money plus(Money money)
+        {
+            return new Money(Amount + money.Amount, Currency);
+        }
+
         public static Money operator *(int factor, Money money) => money.times(factor);
         
         public static Money operator *(Money money, int factor) => money.times(factor);
 
         public static Money operator +(Money money1, Money money2)
         {
-            return Money.Dollar(10);
+            return money1.plus(money2);
         }
 
         public static Money Dollar(int amount) => new Money(amount, "USD");
