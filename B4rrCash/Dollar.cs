@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace B4rrCash
 {
-    class Dollar
+    class Dollar : Money
     {
-        private int Amount {get; set;}
         public Dollar(int amount)
         {
+            this.Currency = "USD";
             this.Amount = amount;
         }
 
