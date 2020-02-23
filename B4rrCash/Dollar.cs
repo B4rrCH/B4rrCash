@@ -19,6 +19,11 @@ namespace B4rrCash
             return new Dollar(factor * dollar.Amount);
         }
 
+        public static Dollar operator *(Dollar dollar, int factor)
+        {
+            return new Dollar(factor * dollar.Amount);
+        }
+
         public override bool Equals(object obj)
         {
             return obj is Dollar dollar &&

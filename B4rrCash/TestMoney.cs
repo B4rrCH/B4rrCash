@@ -17,6 +17,7 @@ namespace B4rrCash
             Dollar fiveDollars = new Dollar(5);
             Dollar tenDollars = new Dollar(10);
             Assert.AreEqual(tenDollars, 2 * fiveDollars);
+            Assert.AreEqual(tenDollars, fiveDollars * 2);
         }
     }
 }
