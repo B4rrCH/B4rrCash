@@ -25,5 +25,16 @@ namespace B4rrCash
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Currency);
             return hashCode;
         }
+
+        public abstract Money times(int factor);
+
+        public static Money operator *(int factor, Money money)
+        {
+            return money.times(factor);
+        }
+        public static Money operator *(Money money, int factor)
+        {
+            return money.times(factor);
+        }
     }
 }

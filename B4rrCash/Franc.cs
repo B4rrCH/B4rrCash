@@ -14,14 +14,7 @@ namespace B4rrCash
             this.Amount = amount;
         }
 
-        public static Franc operator *(int factor, Franc franc)
-        {
-            return new Franc(factor * franc.Amount);
-        }
+        public override Money times(int factor) => new Franc(factor * Amount);
 
-        public static Franc operator *(Franc franc, int factor)
-        {
-            return new Franc(factor * franc.Amount);
-        }
     }
 }

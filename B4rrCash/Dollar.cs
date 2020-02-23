@@ -14,14 +14,6 @@ namespace B4rrCash
             this.Amount = amount;
         }
 
-        public static Dollar operator *(int factor, Dollar dollar)
-        {
-            return new Dollar(factor * dollar.Amount);
-        }
-
-        public static Dollar operator *(Dollar dollar, int factor)
-        {
-            return new Dollar(factor * dollar.Amount);
-        }
+        public override Money times(int factor) => new Dollar(factor * Amount);
     }
 }
