@@ -49,7 +49,7 @@ namespace B4rrCash
         public void TestCurrency()
         {
             Money fiveFrancs = Money.Franc(5);
-            Assert.AreEqual("CHF", fiveFrancs.Currency);
+            Assert.AreEqual("CHF", fiveFrancs.GetCurrency());
         }
     }
 }

@@ -8,14 +8,15 @@ namespace B4rrCash
 {
     class Dollar : Money
     {
-        public override string Currency() => "USD";
         public Dollar()
         {
+            Currency = "USD";
             this.Amount = 1;
         }
 
         private Dollar(int amount)
         {
+            Currency = "USD";
             this.Amount = amount;
         }
 

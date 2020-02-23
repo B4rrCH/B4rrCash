@@ -9,20 +9,21 @@ namespace B4rrCash
     abstract class Money
     {
         public int Amount { get; protected set; }
-        abstract public string Currency();
+        public string Currency { get; protected set; }
+        public string GetCurrency() => this.Currency;
 
         public override bool Equals(object obj)
         {
             return obj is Money money &&
                    Amount == money.Amount &&
-                   Currency() == money.Currency();
+                   GetCurrency() == money.GetCurrency();
         }
 
         public override int GetHashCode()
         {
             var hashCode = -259941593;
             hashCode = hashCode * -1521134295 + Amount.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Currency());
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(GetCurrency());
             return hashCode;
         }
 

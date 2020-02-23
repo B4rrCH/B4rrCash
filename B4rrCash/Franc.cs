@@ -8,15 +8,16 @@ namespace B4rrCash
 {
     class Franc : Money
     {
-        public override string Currency() => "CHF";
         public Franc()
         {
-            this.Amount = 1;
+            Currency = "CHF";
+            Amount = 1;
         }
 
         private Franc(int amount)
         {
-            this.Amount = amount;
+            Currency = "CHF";
+            Amount = amount;
         }
 
         public override Money times(int factor) => new Franc(factor * Amount);
