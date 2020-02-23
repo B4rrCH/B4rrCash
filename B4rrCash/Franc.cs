@@ -23,16 +23,5 @@ namespace B4rrCash
         {
             return new Franc(factor * franc.Amount);
         }
-
-        public override bool Equals(object obj)
-        {
-            return obj is Franc franc &&
-                   Amount == franc.Amount;
-        }
-
-        public override int GetHashCode()
-        {
-            return -602769199 + Amount.GetHashCode();
-        }
     }
 }

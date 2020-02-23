@@ -23,16 +23,5 @@ namespace B4rrCash
         {
             return new Dollar(factor * dollar.Amount);
         }
-
-        public override bool Equals(object obj)
-        {
-            return obj is Dollar dollar &&
-                   Amount == dollar.Amount;
-        }
-
-        public override int GetHashCode()
-        {
-            return -602769199 + Amount.GetHashCode();
-        }
     }
 }

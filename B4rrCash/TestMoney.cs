@@ -35,11 +35,14 @@ namespace B4rrCash
             Dollar fiveDollars = new Dollar(5);
             Dollar fiveDollars2 = new Dollar(5);
             Dollar sixDollars = new Dollar(6);
+            Franc fiveFrancs = new Franc(5);
 
             Assert.IsTrue(fiveDollars.Equals(fiveDollars2));
             Assert.AreNotSame(fiveDollars, fiveDollars2);
 
             Assert.IsFalse(fiveDollars.Equals(sixDollars));
+
+            Assert.IsFalse(fiveDollars.Equals(fiveFrancs));
         }
     }
 }
