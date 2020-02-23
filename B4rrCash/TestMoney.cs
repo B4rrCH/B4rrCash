@@ -12,12 +12,21 @@ namespace B4rrCash
     public class TestMoney
     {
         [Test]
-        public void TestMultiplication()
+        public void TestDollarMultiplication()
         {
             Dollar fiveDollars = new Dollar(5);
-            Dollar tenDollars = new Dollar(10);
+            Dollar tenDollars = new Dollar(2 * 5);
             Assert.AreEqual(tenDollars, 2 * fiveDollars);
             Assert.AreEqual(tenDollars, fiveDollars * 2);
+        }
+
+        [Test]
+        public void TestFrancMultiplication()
+        {
+            Franc fiveFrancs = new Franc(5);
+            Franc tenFrancs = new Franc(2 * 5);
+            Assert.AreEqual(tenFrancs, 2 * fiveFrancs);
+            Assert.AreEqual(tenFrancs, fiveFrancs * 2);
         }
 
         [Test]

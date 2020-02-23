@@ -6,28 +6,28 @@ using System.Threading.Tasks;
 
 namespace B4rrCash
 {
-    class Dollar
+    class Franc
     {
-        private int Amount {get; set;}
-        public Dollar(int amount)
+        private int Amount { get; set; }
+        public Franc(int amount)
         {
             this.Amount = amount;
         }
 
-        public static Dollar operator *(int factor, Dollar dollar)
+        public static Franc operator *(int factor, Franc franc)
         {
-            return new Dollar(factor * dollar.Amount);
+            return new Franc(factor * franc.Amount);
         }
 
-        public static Dollar operator *(Dollar dollar, int factor)
+        public static Franc operator *(Franc franc, int factor)
         {
-            return new Dollar(factor * dollar.Amount);
+            return new Franc(factor * franc.Amount);
         }
 
         public override bool Equals(object obj)
         {
-            return obj is Dollar dollar &&
-                   Amount == dollar.Amount;
+            return obj is Franc franc &&
+                   Amount == franc.Amount;
         }
 
         public override int GetHashCode()
