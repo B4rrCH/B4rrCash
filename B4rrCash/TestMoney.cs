@@ -19,5 +19,18 @@ namespace B4rrCash
             Assert.AreEqual(tenDollars, 2 * fiveDollars);
             Assert.AreEqual(tenDollars, fiveDollars * 2);
         }
+
+        [Test]
+        public void TestEquality()
+        {
+            Dollar fiveDollars = new Dollar(5);
+            Dollar fiveDollars2 = new Dollar(5);
+            Dollar sixDollars = new Dollar(6);
+
+            Assert.IsTrue(fiveDollars.Equals(fiveDollars2));
+            Assert.AreNotSame(fiveDollars, fiveDollars2);
+
+            Assert.IsFalse(fiveDollars.Equals(sixDollars));
+        }
     }
 }
